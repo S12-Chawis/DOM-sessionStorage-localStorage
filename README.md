@@ -45,6 +45,5 @@ Edit
 ![alt text](image.png)
 
 ## Author
-Santiago Villa Panesso
 Developed by Santiago Villa Panesso
 
