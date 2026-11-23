@@ -1,4 +1,3 @@
-import './style.css';
 import { Person } from './classes/Person.js';
 import { saveUserData, obtainUserData, deleteUsereData } from './utils/storage.js';
 import { getInteractionCount, incrementInteractionCount } from './utils/interaction.js';
@@ -30,7 +29,12 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   })
 
-  deleteButton.addEventListener('click', () => {
+  deleteButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    const users = obtainUserData();
+    if (users == null) {
+      return;
+    }
     deleteUsereData();
     alert('User data deleted successfully.');
     updateInteractionDisplay(incrementInteractionCount());
@@ -55,7 +59,7 @@ userList.innerHTML = '';
 const users = obtainUserData();
 
 // If no users are found, display a message
-if (users.length === 0) {
+if (users === null) {
   const empty = document.createElement('li');
   empty.textContent = 'There are no users saved.';
   userList.appendChild(empty);
